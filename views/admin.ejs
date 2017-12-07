@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8"/>
+    <link rel='stylesheet' href='/stylesheets/admin_basic.css'/>
+
+  </head>
+  <body>
+    <!-- <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p> -->
+    <div id="topbox">
+      <div id="nav_content">
+        <h1>
+          <img src="/images/logo.png" alt="로고 이미지">
+        </h1>
+        <nav id="topMenu">
+          <ul>
+            <li class="menu">
+              <a class="menuLink" href="/admin">홈</a>
+            </li>
+            <li>|</li>
+            <li class="menu">
+              <a class="menuLink" href="/admin">글 관리</a>
+              <ul class="submenu">
+                <li><a class="submenuLink" href="/admin">기본정보</a></li>
+                <li><a class="submenuLink" href="/admin">지점소개</a></li>
+                <li><a class="submenuLink" href="/admin">강사정보</a></li>
+              </ul>
+            </li>
+            <li>|</li>
+            <li class="menu">
+              <a class="menuLink" href="/admin">레슨 관리</a>
+              <ul class="submenu">
+                <li><a class="submenuLink" href="/admin">레슨 소개</a></li>
+              </ul>
+            </li>
+            <li>|</li>
+            <li class="menu">
+              <a class="menuLink" href="/admin">커뮤니티 관리</a>
+              <ul class="submenu">
+                <li><a class="submenuLink" href="/admin">공지사항</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>
