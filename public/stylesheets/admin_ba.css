@@ -4,9 +4,9 @@
 }
 #topbox{
   width: 1100px;
-  margin-top: 0px;
+  margin-top: 100px;
   margin-right: auto;
-  margin-bottom: 0px;
+  margin-bottom: 100px;
   margin-left: auto;
 }
 #nav_content{
@@ -73,6 +73,6 @@ transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되�
 .menu:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
 height: 93px; /* 높이를 93px로 설정 */
 }
-.submenuLink:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
+.submenu li:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
 background-color: #dddddd; /* 배경을 RGB(DDDDDD)로 설정 */
 }
