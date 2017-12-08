@@ -10,15 +10,19 @@ body{
   font-family: dotum;
 }
 header{
-  min-width: 1500px;
+  width: 100%;
+  min-width: 1530px;
   text-align: center;
 }
 header img{
   width: 500px;
 }
 nav{
+  /*창 크기에 변동되지 않는 페이지를 만들기 위함
+  메뉴는 브라우저 창의 상단쪽에 위치하도록 만듦*/
   width: 100%;
-  position: absolute;
+  min-width: 1500px;
+  position: fixed;
   top: 40px;
 }
 nav ul{
@@ -39,7 +43,7 @@ nav li a{
 
 #homemenu{
   background-color: #4CAF50;
-  padding: 0px 20px;
+  padding: 0px 10px;
 }
 .menu{
   display: inline;
@@ -51,18 +55,24 @@ nav li a{
 .submenu{
   display: none;
   position: absolute;
+  min-width: 159px;
+  border: solid 1px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   /*잘보면 상자의 테두리에 그림자가 들어가 있는것을 확인 할 수 있다.*/
 }
 .submenu a{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   color: black;
   padding: 12px 16px;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 .submenu a:hover{
-  color: #f1f1f1
+  background-color: #eaeae1
 }
 .menu:hover .submenu{
   display: block;

@@ -5,8 +5,5 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('admin', { title: 'Pilates' });
 });
-router.get('/sample', function(req, res, next) {
-  res.render('sample');
-});
 
 module.exports = router;
