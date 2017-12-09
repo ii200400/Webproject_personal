@@ -27,7 +27,7 @@ var now = new Date();
 var time = dateFormat(now, "yyyy-mm-dd hh:MM:ss");
 console.log(time);
 // var insert_sql = 'INSERT INTO notice_table (name,title,description,created) VALUES(?,?,?,?)'
-// var params = ['뇌지','재목제목','글을 씁니다.',time]
+// var insert_params = ['뇌지','재목제목','글을 씁니다.',time]
 // connection.query(insert_sql, params, function(err, rows, fields) {
 //   if (!err){
 //     console.log('The solution is: ', rows);
@@ -40,17 +40,32 @@ console.log(time);
 //   }
 // });
 
-var search_sql = 'SELECT * FROM notice_table'
-connection.query(search_sql, function(err, rows, fields) {
-  if (!err){
-    console.log('The solution is: ', rows);
-    for (var i = 0; i < rows.length; i++) {
-      console.log(rows[i].title);
-    }
-  }else{
-    console.log('Error while performing Query.', err);
-  }
-});
+// var update_sql = 'UPDATE notice_table SET name=?, title=? WHERE id=?'
+// var update_params = ['영선','업데이트!',1];
+// connection.query(update_sql, update_params, function(err, rows, fields) {
+//   if (!err){
+//     console.log('The solution is: ', rows);
+//     for (var i = 0; i < rows.length; i++) {
+//       console.log(rows[i].title);
+//     }
+//   }else{
+//     console.log('Error while performing Query.', err);
+//   }
+// });
+
+// var delete_sql = 'DELETE FROM notice_table WHERE id=?'
+// var delete_params = [2];
+// connection.query(delete_sql, delete_params, function(err, rows, fields) {
+//   if (!err){
+//     console.log('The solution is: ', rows);
+//     for (var i = 0; i < rows.length; i++) {
+//       console.log(rows[i].title);
+//     }
+//   }else{
+//     console.log('Error while performing Query.', err);
+//   }
+// });
+
 connection.end();
 
 // view engine (뷰 환경설정)
