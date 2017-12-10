@@ -47,12 +47,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for(var i=0; i<rows.length; i++){ %>
+						<% for(var i=0; i<rows.length; i++){
+							var d = new Date(rows[i].created)
+							var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate() %>
 							<tr>
 								<td style="text-align:center;"><%= i+1 %></td>
 								<td><%= rows[i].title %></td>
 								<td style="text-align:center;"><%= rows[i].name %></td>
-								<td style="text-align:center;"><%= rows[i].created %></td>
+								<td style="text-align:center;"><%= date %></td>
 							</tr>
 						<% } %>
 					</tbody>

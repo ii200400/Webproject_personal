@@ -68,6 +68,8 @@ router.get('/work2', function(req, res, next) {
   var search_sql = 'SELECT * FROM notice_table'
   connection.query(search_sql, function(err, rows, fields) {
     if (!err){
+      console.log(dateFormat(rows[0].created, "yyyy.m.d"));
+      
       res.render('work2', {rows:rows})
     }else{
       console.log('Error while performing Query.', err);
