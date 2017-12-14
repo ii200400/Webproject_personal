@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>자연 필라테스</title>
+    <meta charset="utf-8"/>
+    <!-- 매뉴와 사진에 대한 css -->
+    <link rel='stylesheet' href='/css/admin_menu.css'/>
+    <!-- admin 하단에 대한 css -->
+    <link rel='stylesheet' href='/css/admin_footer.css'/>
+
+    <!-- 상담페이지의 css -->
+    <link rel='stylesheet' href='/css/admin_consulting.css'/>
+  </head>
+
+  <body>
+    <%- include('admin_header') -%>
+
+    <section>
+      <div>
+        <p>1:1 문의</p>
+      </div>
+      <table>
+        <colgroup>
+          <col style="width: 140px;" <!--글 번호-->
+          <col style="width: 300px;" <!--제목-->
+          <col style="width: 160px;" <!--작성자-->
+          <col style="width: 160px;" <!--작성일-->
+          <col style="width: 120px;" <!--잠금-->
+        </colgroup>
+        <thead>
+          <tr>
+            <th>글 번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>답글</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>1</td>
+              <td id="title_content">2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>true</td>
+            </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <%- include('admin_footer') -%>
+  </body>
+</html>

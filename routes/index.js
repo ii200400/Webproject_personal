@@ -1,9 +1,8 @@
 var express = require('express');
+var router = express.Router();
 
 var mysql = require('mysql');
-var dateFormat = require('dateformat');
 
-//수정 필요
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -11,9 +10,6 @@ var connection = mysql.createConnection({
   database : 'pilates'
 });
 
-var now = new Date();
-var time = dateFormat(now, "yyyy-mm-dd hh:MM:ss");
-console.log(time);
 // var insert_sql = 'INSERT INTO notice_table (name,title,description,created) VALUES(?,?,?,?)'
 // var insert_params = ['뇌지','재목제목','글을 씁니다.',time]
 // connection.query(insert_sql, params, function(err, rows, fields) {
@@ -54,8 +50,6 @@ console.log(time);
 //   }
 // });
 
-var router = express.Router();
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
@@ -68,8 +62,6 @@ router.get('/work2', function(req, res, next) {
   var search_sql = 'SELECT * FROM notice_table'
   connection.query(search_sql, function(err, rows, fields) {
     if (!err){
-      console.log(dateFormat(rows[0].created, "yyyy.m.d"));
-      
       res.render('work2', {rows:rows})
     }else{
       console.log('Error while performing Query.', err);

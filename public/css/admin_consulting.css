@@ -1,0 +1,31 @@
+section{
+  width: 1500px;
+  margin: 140px 0px;
+}
+section p{
+  font-size: 40px;
+}
+section div{
+  width: 320px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  padding: 10px 0px;
+}
+section table{
+  border-left: solid 1.3px;
+  display: inline-block;
+  padding: 0px 40px;
+}
+section tr td, section tr th{
+  text-align: center;
+  padding: 8px;
+}
+section tr td{
+  border: solid 1px;
+  border-color: #222831;
+}
+
+section #title_content{
+  text-align: left;
+}

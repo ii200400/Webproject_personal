@@ -9,6 +9,11 @@ body{
   font-size: 1em;
   font-family: dotum;
 }
+.container{
+  min-width: 900px;
+  padding: 100px 300px;
+}
+
 header{
   width: 100%;
   min-width: 1530px;
@@ -22,7 +27,7 @@ nav{
   메뉴는 브라우저 창의 상단쪽에 위치하도록 만듦*/
   width: 100%;
   min-width: 1500px;
-  position: fixed;
+  position: absolute;
   top: 40px;
 }
 nav ul{
@@ -30,7 +35,7 @@ nav ul{
   overflow: hidden;
   background-color: #333;
   text-align: center;
-  padding-left: 40px;
+  padding: 0px 40px;
 }
 nav li{
   float: left;
@@ -44,6 +49,10 @@ nav li a{
 #homemenu{
   background-color: #4CAF50;
   padding: 0px 10px;
+}
+#to_index{
+  background-color: #9999ff;
+  float: right;
 }
 .menu{
   display: inline;
