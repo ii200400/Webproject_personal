@@ -9,13 +9,24 @@ var connection = mysql.createConnection({
   password : 'dudtjs972972',
   database : 'pilates'
 });
+connection.connect();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('admin');
+  res.render('basic');
 });
 router.get('/consulting', function(req, res, next) {
-  res.render('admin_consulting');
+  var search_sql = 'SELECT * FROM notice_table'
+  connection.query(search_sql, function(err, rows, fields) {
+    if (!err){
+      res.render('consulting', {rows:rows})
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+});
+router.get('/consult_detail', function(req, res, next) {
+  res.render('consult_detail');
 });
 
 module.exports = router;

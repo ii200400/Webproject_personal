@@ -9,6 +9,7 @@ var connection = mysql.createConnection({
   password : 'dudtjs972972',
   database : 'pilates'
 });
+connection.connect();
 
 // var insert_sql = 'INSERT INTO notice_table (name,title,description,created) VALUES(?,?,?,?)'
 // var insert_params = ['뇌지','재목제목','글을 씁니다.',time]
@@ -58,7 +59,6 @@ router.get('/work', function(req, res, next) {
   res.render('work');
 });
 router.get('/work2', function(req, res, next) {
-  connection.connect();
   var search_sql = 'SELECT * FROM notice_table'
   connection.query(search_sql, function(err, rows, fields) {
     if (!err){
@@ -67,7 +67,6 @@ router.get('/work2', function(req, res, next) {
       console.log('Error while performing Query.', err);
     }
   });
-  connection.end();
 });
 router.get('/services', function(req, res, next) {
   res.render('services');

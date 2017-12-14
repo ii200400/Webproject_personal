@@ -13,10 +13,10 @@
   </head>
 
   <body>
-    <%- include('admin_header') -%>
+    <%- include('header') -%>
 
     <section>
-      <div>
+      <div id="submenu_title">
         <p>1:1 문의</p>
       </div>
       <table>
@@ -37,17 +37,28 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <td>1</td>
-              <td id="title_content">2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>true</td>
+          <% for(var i=0; i<rows.length; i++){
+            var d = new Date(rows[i].created)
+            var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate()
+            if (rows[i].answer === null){
+              var isanswer = 'x'
+            }else{
+              var isanswer = 'o'
+            } %>
+            <tr class="consult">
+              <td><%= i+1 %></td>
+              <td id="title_content"><%= rows[i].title %></td>
+              <td><%= rows[i].name %></td>
+              <td><%= date %></td>
+              <td><%= isanswer %></td>
             </tr>
+          <% } %>
         </tbody>
       </table>
     </section>
 
-    <%- include('admin_footer') -%>
+    <%- include('footer') -%>
+
+    <script src="/js/admin/table_controller.js"></script>
   </body>
 </html>

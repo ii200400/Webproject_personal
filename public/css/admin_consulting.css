@@ -5,27 +5,41 @@ section{
 section p{
   font-size: 40px;
 }
-section div{
+section #submenu_title{
   width: 320px;
   display: inline-block;
-  float: left;
+  vertical-align: top;
   text-align: center;
-  padding: 10px 0px;
+  padding: 30px 0px;
 }
 section table{
   border-left: solid 1.3px;
+  border-collapse: collapse;
   display: inline-block;
-  padding: 0px 40px;
+  padding: 10px 40px;
 }
-section tr td, section tr th{
+section td, section th{
   text-align: center;
   padding: 8px;
 }
-section tr td{
-  border: solid 1px;
+section thead{
+  border-bottom: solid 2px;
   border-color: #222831;
+}
+section tbody{
+  background-color: #e2e2e2;
 }
 
 section #title_content{
   text-align: left;
+}
+
+section tbody tr:hover{
+  background-color: #adadad;
+}
+
+article{
+  display: inline-block;
+  padding: 50px 0px;
+  margin: 0px 40px
 }
