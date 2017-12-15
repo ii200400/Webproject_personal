@@ -1,0 +1,18 @@
+article{
+  border-left: solid 1.3px;
+  display: inline-block;
+  padding: 30px 100px;
+}
+.consult_view li{
+  padding: 10px;
+}
+.consult_view p{
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+.consult_view input{
+  float: right;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin: 8px;
+}

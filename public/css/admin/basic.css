@@ -12,7 +12,7 @@ body{
 }
 section{
   width: 1500px;
-  margin: 140px 0px;
+  margin: 100px 0px;
 }
 section #submenu_title{
   width: 320px;
@@ -99,10 +99,12 @@ nav li a{
 
 /*footer css*/
 footer{
+  min-width: 900px;
   display: flex;
   text-align: center;
   justify-content: center;
   background-color: #222831;
+  padding: 100px 300px;
 }
 footer div{
   width: 200px;

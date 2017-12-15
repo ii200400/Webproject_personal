@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='/css/admin/basic.css'/>
 
     <!-- 상담페이지의 css -->
-    <link rel='stylesheet' href='/css/admin_consulting.css'/>
+    <link rel='stylesheet' href='/css/admin/table.css'/>
   </head>
 
   <body>
@@ -35,13 +35,13 @@
           </tr>
         </thead>
         <tbody>
-          <% for(var i=0; i<rows.length; i++){
-            var d = new Date(rows[i].created)
-            var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate()
+          <% for(var i = rows.length - 1; i>=0; i--){
+            var d = new Date(rows[i].created);
+            var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
             if (rows[i].answer === null){
-              var isanswer = 'x'
+              var isanswer = 'x';
             }else{
-              var isanswer = 'o'
+              var isanswer = 'o';
             } %>
             <tr class="consult">
               <td><%= i+1 %></td>

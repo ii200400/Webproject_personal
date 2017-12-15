@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='/css/admin/basic.css'/>
 
     <!-- 상담페이지의 css -->
-    <link rel='stylesheet' href='/css/admin_consulting.css'/>
+    <link rel='stylesheet' href='/css/admin/consult.css'/>
   </head>
 
   <body>
@@ -19,14 +19,36 @@
       </div>
       <article>
         <div class="consult_view">
-          <p>제목 : ~~, 작성자 : ~~, 작성일 : ~~, 비밀글 : true false</p>
-          <p>문의글 : </p>
-          <p>답글 : </p>
-          <button type="button" name="update">등록</button>
+          <ul>
+            <%
+              var d = data.created;
+              var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
+              if (data.password === null){
+                var ispassword = 'x';
+              }else{
+                var ispassword = 'o';
+              }
+            %>
+            <li>제목 : <%= data.title %></li>
+            <li>작성자 : <%= data.name %></li>
+            <li>작성일 : <%= date %></li>
+            <li>비밀글 : <%= ispassword %></li>
+            <li>
+              <p>문의글</p>
+              <textarea rows="10" cols="100" readonly> <%= data.description %> </textarea>
+            </li>
+            <li>
+              <p>답글</p>
+              <form action="/admin/update" method="post">
+                <textarea rows="10" cols="100" name="answer" form="usrform"></textarea><br>
+                <input type="submit" value="등록">
+              </form>
+            </li>
+          </ul>
+
         </div>
       </article>
     </section>
-
 
     <%- include('footer') -%>
   </body>

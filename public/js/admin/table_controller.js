@@ -1,8 +1,9 @@
 var rows = document.getElementsByClassName("consult");
 
-var detail_page = function(){
-  location.href = "/admin/consult_detail";
+function detail_page(self){
+  location.href = "/admin/consulting/" + (i - self.rowIndex);
 };
 for (var i = 0; i < rows.length; i++) {
-  rows[i].addEventListener("click", detail_page, false);
+  console.log(i);
+  rows[i].addEventListener("click", function(){detail_page(this)}, false);
 }
