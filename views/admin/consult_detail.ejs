@@ -40,12 +40,12 @@
             <li>
               <p>답글</p>
               <form action="/admin/update" method="post">
-                <textarea rows="10" cols="100" name="answer" form="usrform"></textarea><br>
+                <textarea rows="10" cols="100" name="answer" form="usrform"><%= data.answer %></textarea><br>
+                <input type="hidden" name="id" value= <%= data.id %> >
                 <input type="submit" value="등록">
               </form>
             </li>
           </ul>
-
         </div>
       </article>
     </section>

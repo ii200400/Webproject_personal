@@ -36,29 +36,19 @@ router.get('/consulting/:id', function(req, res, next) {
     }
   });
 });
-router.post('/consulting', function(req, res, next) {
-  var update_sql = 'UPDATE notice_table SET name=?, title=? WHERE id=?'
-  var params = [req.params.id]
-  connection.query(search_sql, params, function(err, rows, fields) {
+
+//서버에서만 사용
+router.post('/update', function(req, res, next) {
+  var update_sql = 'UPDATE notice_table SET answer=? WHERE id=?'
+  console.log(req.body);
+  var update_params = [req.body.answer, req.body.id]
+  connection.query(update_sql, update_params, function(err, rows, fields) {
     if (!err){
-      res.send(rows[0]);
-      res.render('consult_detail', {data:rows[0]});
+      res.redirect('/admin/consulting')
     }else{
       console.log('Error while performing Query.', err);
     }
   });
 });
-//
-// var update_params = ['영선','업데이트!',1];
-// connection.query(update_sql, update_params, function(err, rows, fields) {
-//   if (!err){
-//     console.log('The solution is: ', rows);
-//     for (var i = 0; i < rows.length; i++) {
-//       console.log(rows[i].title);
-//     }
-//   }else{
-//     console.log('Error while performing Query.', err);
-//   }
-// });
 
 module.exports = router;
