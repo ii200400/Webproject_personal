@@ -39,9 +39,9 @@ router.get('/consulting/:id', function(req, res, next) {
 
 //서버에서만 사용
 router.post('/update', function(req, res, next) {
+  var answer = req.body.answer.replace(/ /gi, "")===""? null : req.body.answer
   var update_sql = 'UPDATE notice_table SET answer=? WHERE id=?'
-  console.log(req.body);
-  var update_params = [req.body.answer, req.body.id]
+  var update_params = [answer, req.body.id]
   connection.query(update_sql, update_params, function(err, rows, fields) {
     if (!err){
       res.redirect('/admin/consulting')

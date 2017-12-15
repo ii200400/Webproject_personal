@@ -10,7 +10,7 @@ article{
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
-.consult_view input{
+.consult_view #update_button{
   float: right;
   border-radius: 5px;
   padding: 7px 15px;

@@ -40,9 +40,10 @@
             <li>
               <p>답글</p>
               <form action="/admin/update" method="post">
-                <textarea rows="10" cols="100" name="answer" form="usrform"><%= data.answer %></textarea><br>
+                <!-- <textarea rows="10" cols="100" name="answer" form="usrform" value="dksk.."><%= data.answer %></textarea><br> -->
+                <input type="text" name="answer" value= <%= data.answer %> ><br>
                 <input type="hidden" name="id" value= <%= data.id %> >
-                <input type="submit" value="등록">
+                <input id="update_button" type="submit" value="등록">
               </form>
             </li>
           </ul>
