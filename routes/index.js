@@ -11,42 +11,22 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-// var insert_sql = 'INSERT INTO notice_table (name,title,description,created) VALUES(?,?,?,?)'
-// var insert_params = ['뇌지','재목제목','글을 씁니다.',time]
-// connection.query(insert_sql, params, function(err, rows, fields) {
-//   if (!err){
-//     console.log('The solution is: ', rows);
-//     for (var i = 0; i < rows.length; i++) {
-//       console.log(rows[i].title);
-//     }
-//     //rows.insertId 고유 id값을 가져올 수 있다고 한다.
-//   }else{
-//     console.log('Error while performing Query.', err);
-//   }
-// });
-
-// var delete_sql = 'DELETE FROM notice_table WHERE id=?'
-// var delete_params = [2];
-// connection.query(delete_sql, delete_params, function(err, rows, fields) {
-//   if (!err){
-//     console.log('The solution is: ', rows);
-//     for (var i = 0; i < rows.length; i++) {
-//       console.log(rows[i].title);
-//     }
-//   }else{
-//     console.log('Error while performing Query.', err);
-//   }
-// });
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  var numbersof_update_sql = 'UPDATE numbersof SET visiters=visiters+1';
+  connection.query(numbersof_update_sql, function(err, rows, fields) {
+    if (!err){
+      res.render('index');
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
 });
 router.get('/work', function(req, res, next) {
   res.render('work');
 });
 router.get('/work2', function(req, res, next) {
-  var search_sql = 'SELECT * FROM notice_table'
+  var search_sql = 'SELECT * FROM consult'
   connection.query(search_sql, function(err, rows, fields) {
     if (!err){
       res.render('work2', {rows:rows})

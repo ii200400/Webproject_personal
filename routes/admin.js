@@ -49,12 +49,36 @@ router.get('/menu/consulting/:id', function(req, res, next) {
 
 //서버에서만 사용
 router.post('/update', function(req, res, next) {
-  var answer = req.body.answer.replace(/ /gi, "")===""? null : req.body.answer
-  var update_sql = 'UPDATE consult SET answer=? WHERE id=?'
-  var update_params = [answer, req.body.id]
-  connection.query(update_sql, update_params, function(err, rows, fields) {
+  var answer = req.body.answer.replace(/ /gi, "")===""? null : req.body.answer;
+  var consult_search_sql = 'SELECT * FROM consult WHERE id=?';
+  var consult_search_params = [req.body.id]
+  connection.query(consult_search_sql, consult_search_params, function(err, rows, fields) {
     if (!err){
-      res.redirect('/admin/menu/consulting')
+      var preanswer = rows[0].answer;
+      console.log(preanswer, answer);
+      if (answer === null && preanswer !==null) {
+        var numbersof_update_sql = 'UPDATE numbersof SET answers=answers-1';
+      }else if (answer !== null && preanswer ===null) {
+        var numbersof_update_sql = 'UPDATE numbersof SET answers=answers+1';
+      }
+
+      connection.query(numbersof_update_sql, function(err, rows, fields) {
+        if (!err){
+          console.log(rows);
+          res.redirect('/admin/menu/consulting');
+        }else{
+          console.log('Error while performing Query.', err);
+        }
+      });
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+
+  var consult_update_sql = 'UPDATE consult SET answer=? WHERE id=?';
+  var consult_update_params = [answer, req.body.id]
+  connection.query(consult_update_sql, consult_update_params, function(err, rows, fields) {
+    if (!err){
     }else{
       console.log('Error while performing Query.', err);
     }
