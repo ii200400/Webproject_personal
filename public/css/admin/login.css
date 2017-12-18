@@ -1,0 +1,27 @@
+p{
+  font-size: 13px;
+  text-align: left;
+}
+
+#center{
+  width: 400px;
+  text-align: center;
+  margin: 200px auto;
+  padding: 0px 300px;
+}
+.userinput{
+  width: 100px;
+  text-align: right;
+  display: inline-block;
+  margin: 5px;
+}
+#input_box{
+  display: inline-block;
+}
+#login_button{
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+}
