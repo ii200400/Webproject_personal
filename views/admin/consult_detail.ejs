@@ -39,9 +39,8 @@
             </li>
             <li>
               <p>답글</p>
-              <form action="/admin/update" method="post">
-                <!-- <textarea rows="10" cols="100" name="answer" form="usrform" value="dksk.."><%= data.answer %></textarea><br> -->
-                <input type="text" name="answer" value= <%= data.answer %> ><br>
+              <form action="/admin/update" method="post" id="myform">
+                <textarea rows="10" cols="100" name="answer" form="myform"><%= data.answer %></textarea><br>
                 <input type="hidden" name="id" value= <%= data.id %> >
                 <input id="update_button" type="submit" value="등록">
               </form>
@@ -50,7 +49,5 @@
         </div>
       </article>
     </section>
-
-    <%- include('footer') -%>
   </body>
 </html>
