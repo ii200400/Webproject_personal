@@ -1,15 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'dudtjs972972',
-  database : 'pilates'
-});
-connection.connect();
+var connection = require('../db')();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

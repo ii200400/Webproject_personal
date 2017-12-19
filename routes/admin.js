@@ -1,15 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-var mysql = require('mysql');
+var session = require('express-session'); //session
+var MySQLStore = require('express-mysql-session')(session);
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'dudtjs972972',
-  database : 'pilates'
-});
-connection.connect();
+var connection = require('../db')();
+
+express().use(session({
+  secret: '98DDV78QQEQHEC998DDH289DH9',
+  resave: false,
+  saveUninitaialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
+  },
+  store:new MySQLStore({
+    host     : 'localhost',
+    port     :  3306,
+    user     : 'root',
+    password : 'dudtjs972972',
+    database : 'pilates'
+  })
+}));
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -53,23 +64,23 @@ router.post('/update', function(req, res, next) {
   var consult_search_sql = 'SELECT * FROM consult WHERE id=?';
   var consult_search_params = [req.body.id]
   connection.query(consult_search_sql, consult_search_params, function(err, rows, fields) {
+    var numbersof_update_sql = null
     if (!err){
       var preanswer = rows[0].answer;
-      console.log(preanswer, answer);
       if (answer === null && preanswer !==null) {
-        var numbersof_update_sql = 'UPDATE numbersof SET answers=answers-1';
+        numbersof_update_sql = 'UPDATE numbersof SET answers=answers-1';
       }else if (answer !== null && preanswer ===null) {
-        var numbersof_update_sql = 'UPDATE numbersof SET answers=answers+1';
+        numbersof_update_sql = 'UPDATE numbersof SET answers=answers+1';
       }
 
-      connection.query(numbersof_update_sql, function(err, rows, fields) {
-        if (!err){
-          console.log(rows);
-          res.redirect('/admin/menu/consulting');
-        }else{
-          console.log('Error while performing Query.', err);
-        }
-      });
+      if (numbersof_update_sql !== null) {
+        connection.query(numbersof_update_sql, function(err, rows, fields) {
+          if (!err){
+          }else{
+            console.log('Error while performing Query.', err);
+          }
+        });
+      }
     }else{
       console.log('Error while performing Query.', err);
     }
@@ -83,6 +94,11 @@ router.post('/update', function(req, res, next) {
       console.log('Error while performing Query.', err);
     }
   });
+
+  res.redirect('/admin/menu/consulting');
+});
+router.post('/login', function(req, res, next) {
+
 });
 
 module.exports = router;
