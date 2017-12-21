@@ -14,13 +14,13 @@ router.use(session({
   secret: '98DDV78QQEQHEC998DDH289DH9',
   resave: false,
   saveUninitaialized: true,
-  // store:new MySQLStore({
-  //   host     : 'localhost',
-  //   port     :  3306,
-  //   user     : 'root',
-  //   password : 'dudtjs972972',
-  //   database : 'pilates'
-  // })
+  store:new MySQLStore({
+    host     : 'localhost',
+    port     :  3306,
+    user     : 'root',
+    password : 'dudtjs972972',
+    database : 'pilates'
+  })
 }));
 router.use(passport.initialize());
 router.use(passport.session());
@@ -118,13 +118,6 @@ router.post('/update', function(req, res, next) { //mysql업데이트
 });
 
 //보안 로그인
-var user = {
-  username:'dudtjs',
-  //'wkdls'
-  password:'3Oacg71aUSByuNr8Sro8brvIHg8h/HyKkjM9EQsAoIc5fdUBZyGTePFR/gF7R4xAhPLHs77mUcC/Fsp7BgoFiCh8oSxvwP6VCUIt3XZhmXp7qvaSbwEch6XVJGsLjY3uUT029hh+M/+e0vl1N3WZq1ylE5cVcEvwZkx/oZvSLWQ=',
-  display: 'im',
-  salt: 'UHt0zBITBM5P2rjqbafQPkzS9Oo4roTNzPdUwt5sxXiEeKFG/gAct0UjRaNtNPGW1aEu7WjsvjdpLknmFJYEmg=='
-};
 passport.serializeUser(function(user, done) {
   done(null, user.userid);
 });
@@ -132,6 +125,7 @@ passport.deserializeUser(function(id, done) {
   var sql = 'SELECT * FROM manager WHERE userid=?';
   connection.query(sql, [id], function(err, rows, fields) {
     if (!err){
+      console.log(rows[0]);
       done(null, rows[0]);
     }else{
       console.log('Error while performing Query.', err);
