@@ -783,18 +783,19 @@ figure {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: rgba(250, 126, 10, 0.7);
+  background: rgba(128, 128, 128, 0.7);
 }
 
-#fh5co-hero .flexslider .slider-text>.slider-text-inner h2 {
-  font-size: 30px;
+#fh5co-hero .flexslider .slider-text>.slider-text-inner h4 {
+  font-size: 20px;
   font-weight: 300;
+  font-style: oblique;
   color: #fff;
-  line-height: 40px;
+  line-height: 25px;
 }
 
 @media screen and (max-width: 768px) {
-  #fh5co-hero .flexslider .slider-text>.slider-text-inner h2 {
+  #fh5co-hero .flexslider .slider-text>.slider-text-inner h4 {
     font-size: 40px;
   }
 }
