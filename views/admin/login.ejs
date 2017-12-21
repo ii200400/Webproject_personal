@@ -12,21 +12,22 @@
   <body>
     <div id="center">
       <img src="/images/login.gif" alt="login_image">
-      <form action="/admin/login_check" method="post">
+      <form action="/admin/login" method="post">
         <!-- jayeonpila@naver.com
           27445567 -->
         <div id="input_box">
           <div class="userinput">
             ID :
           </div>
-          <input type="text" name="userid" value=""><br>
+          <input type="text" name="username"><br>
           <div class="userinput">
             PASSWARD :
           </div>
-          <input type="text" name="userpassward" value="">
+          <input type="password" name="passward">
         </div>
         <input id="login_button" type="submit" name="login_button" value="로그인">
       </form>
+      <p id="login_fail"> ID 혹은 PASSWARD가 틀렸습니다. </p>
       <p>※ 관리자 페이지로 접속합니다.</p>
       <p>※ 공공장소에서의 로그인시 정보 유출에 주의하시기 바랍니다</p>
     </div>

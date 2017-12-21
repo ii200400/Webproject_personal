@@ -1,18 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-var session = require('express-session'); //session
+var session = require('express-session'); //login session
 var MySQLStore = require('express-mysql-session')(session);
+var bkfd2Password = require("pbkdf2-password"); //login password to hasher
+var hasher = bkfd2Password();
+var passport = require('passport') //login authorize
+var LocalStrategy = require('passport-local').Strategy;
 
 var connection = require('../db')();
 
-express().use(session({
+router.use(session({
   secret: '98DDV78QQEQHEC998DDH289DH9',
   resave: false,
   saveUninitaialized: true,
-  cookie: {
-    maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
-  },
   store:new MySQLStore({
     host     : 'localhost',
     port     :  3306,
@@ -21,6 +22,8 @@ express().use(session({
     database : 'pilates'
   })
 }));
+router.use(passport.initialize());
+router.use(passport.session());
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -59,7 +62,7 @@ router.get('/menu/consulting/:id', function(req, res, next) {
 });
 
 //서버에서만 사용
-router.post('/update', function(req, res, next) {
+router.post('/update', function(req, res, next) { //mysql업데이트
   var answer = req.body.answer.replace(/ /gi, "")===""? null : req.body.answer;
   var consult_search_sql = 'SELECT * FROM consult WHERE id=?';
   var consult_search_params = [req.body.id]
@@ -97,8 +100,37 @@ router.post('/update', function(req, res, next) {
 
   res.redirect('/admin/menu/consulting');
 });
-router.post('/login', function(req, res, next) {
 
+// passport.use(new LocalStrategy{
+//   function(username, passward, done){
+//     var username = username;
+//     var password = passward;
+//   }
+// });
+//보안 로그인
+router.post('/login', function(req, res, next){
+  var user = {
+    username:'dudtjs',
+    passward:'111',
+    display: 'im'
+  };
+
+  var uname = req.body.username;
+  var pas = req.body.passward;
+  if(uname === user.username && pas === user.passward){
+    req.session.display = user.display;
+    req.session.save(function(){
+      res.redirect('/admin/menu');
+    });
+  }else{
+    res.redirect('/admin')
+  }
+});
+router.get('/logout', function(req, res, next){
+  delete req.session.display;
+  req.session.save(function(){
+    res.redirect('/admin')
+  });
 });
 
 module.exports = router;

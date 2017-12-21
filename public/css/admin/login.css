@@ -25,3 +25,7 @@ p{
   vertical-align: top;
   margin: 5px;
 }
+#login_fail{
+  color: red;
+  text-align: center;
+}
