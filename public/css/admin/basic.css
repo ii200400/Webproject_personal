@@ -63,6 +63,9 @@ nav li a{
 #to_index{
   background-color: #9999ff;
 }
+.user{
+  float: right;
+}
 .menu{
   display: inline;
   min-width: 160px;

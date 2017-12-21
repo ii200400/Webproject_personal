@@ -14,51 +14,67 @@ router.use(session({
   secret: '98DDV78QQEQHEC998DDH289DH9',
   resave: false,
   saveUninitaialized: true,
-  store:new MySQLStore({
-    host     : 'localhost',
-    port     :  3306,
-    user     : 'root',
-    password : 'dudtjs972972',
-    database : 'pilates'
-  })
+  // store:new MySQLStore({
+  //   host     : 'localhost',
+  //   port     :  3306,
+  //   user     : 'root',
+  //   password : 'dudtjs972972',
+  //   database : 'pilates'
+  // })
 }));
 router.use(passport.initialize());
 router.use(passport.session());
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login');
+  if (!req.user) {
+    res.render('login');
+  }else{
+    res.redirect('/admin/menu');
+  }
 });
 router.get('/menu', function(req, res, next) {
-  var search_sql = 'SELECT * FROM numbersof';
-  connection.query(search_sql, function(err, rows, fields) {
-    if (!err){
-      res.render('basic', {numbers:rows[0]});
-    }else{
-      console.log('Error while performing Query.', err);
-    }
-  });
+  if (req.user) {
+    var search_sql = 'SELECT * FROM numbersof';
+    connection.query(search_sql, function(err, rows, fields) {
+      if (!err){
+        res.render('basic', {numbers:rows[0], user: req.user.display});
+      }else{
+        console.log('Error while performing Query.', err);
+      }
+    });
+  }else{
+    res.redirect('/admin');
+  }
 });
 router.get('/menu/consulting', function(req, res, next) {
-  var search_sql = 'SELECT * FROM consult';
-  connection.query(search_sql, function(err, rows, fields) {
-    if (!err){
-      res.render('consulting', {rows:rows});
-    }else{
-      console.log('Error while performing Query.', err);
-    }
-  });
+  if (req.user) {
+    var search_sql = 'SELECT * FROM consult';
+    connection.query(search_sql, function(err, rows, fields) {
+      if (!err){
+        res.render('consulting', {rows:rows, user: req.user.display});
+      }else{
+        console.log('Error while performing Query.', err);
+      }
+    });
+  }else{
+    res.redirect('/admin');
+  }
 });
 router.get('/menu/consulting/:id', function(req, res, next) {
-  var search_sql = 'SELECT * FROM consult';
-  var number = req.params.id;
-  connection.query(search_sql, function(err, rows, fields) {
-    if (!err){
-      res.render('consult_detail', {data:rows[number]});
-    }else{
-      console.log('Error while performing Query.', err);
-    }
-  });
+  if (req.user) {
+    var search_sql = 'SELECT * FROM consult';
+    var number = req.params.id;
+    connection.query(search_sql, function(err, rows, fields) {
+      if (!err){
+        res.render('consult_detail', {data:rows[number], user: req.user.display});
+      }else{
+        console.log('Error while performing Query.', err);
+      }
+    });
+  }else{
+    res.redirect('/admin');
+  }
 });
 
 //서버에서만 사용
@@ -101,36 +117,66 @@ router.post('/update', function(req, res, next) { //mysql업데이트
   res.redirect('/admin/menu/consulting');
 });
 
-// passport.use(new LocalStrategy{
-//   function(username, passward, done){
-//     var username = username;
-//     var password = passward;
-//   }
-// });
 //보안 로그인
-router.post('/login', function(req, res, next){
-  var user = {
-    username:'dudtjs',
-    passward:'111',
-    display: 'im'
-  };
-
-  var uname = req.body.username;
-  var pas = req.body.passward;
-  if(uname === user.username && pas === user.passward){
-    req.session.display = user.display;
-    req.session.save(function(){
-      res.redirect('/admin/menu');
-    });
-  }else{
-    res.redirect('/admin')
-  }
+var user = {
+  username:'dudtjs',
+  //'wkdls'
+  password:'3Oacg71aUSByuNr8Sro8brvIHg8h/HyKkjM9EQsAoIc5fdUBZyGTePFR/gF7R4xAhPLHs77mUcC/Fsp7BgoFiCh8oSxvwP6VCUIt3XZhmXp7qvaSbwEch6XVJGsLjY3uUT029hh+M/+e0vl1N3WZq1ylE5cVcEvwZkx/oZvSLWQ=',
+  display: 'im',
+  salt: 'UHt0zBITBM5P2rjqbafQPkzS9Oo4roTNzPdUwt5sxXiEeKFG/gAct0UjRaNtNPGW1aEu7WjsvjdpLknmFJYEmg=='
+};
+passport.serializeUser(function(user, done) {
+  done(null, user.userid);
 });
-router.get('/logout', function(req, res, next){
-  delete req.session.display;
-  req.session.save(function(){
-    res.redirect('/admin')
+passport.deserializeUser(function(id, done) {
+  var sql = 'SELECT * FROM manager WHERE userid=?';
+  connection.query(sql, [id], function(err, rows, fields) {
+    if (!err){
+      done(null, rows[0]);
+    }else{
+      console.log('Error while performing Query.', err);
+      done("no user!");
+    }
   });
+});
+passport.use(new LocalStrategy(
+  function(username, password, done){
+    //비밀번호 암호화
+    var uname = username;
+    var pwd = password;
+    var sql = 'SELECT * FROM manager WHERE userid=?';
+    connection.query(sql, [uname], function(err, rows, fields) {
+      if (!err){
+        var user = rows[0];
+        console.log(user);
+        return hasher({password:pwd, salt:user.salt},
+          function(err, pass, salt, hash){
+            console.log(pass);
+            if (hash === user.password) {
+              done(null, user);
+            }else{
+              done(null, false);
+            }
+          }
+        );
+      }else{
+        console.log('Error while performing Query.', err);
+      }
+    });
+  }
+));
+router.post(
+  '/login',
+  passport.authenticate(
+    'local',
+    { successRedirect: '/admin/menu',
+    failureRedirect: '/admin',
+    failureFlash: false
+  })
+);
+router.get('/logout', function(req, res, next){
+  req.logout();
+  res.redirect('/admin');
 });
 
 module.exports = router;

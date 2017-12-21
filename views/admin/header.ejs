@@ -12,26 +12,23 @@
       <a href="/admin/menu">글 관리</a>
       <div class="submenu">
         <a href="/admin/menu">기본정보</a>
-        <a href="/admin/menu">지점소개</a>
-        <a href="/admin/menu">강사정보</a>
-      </div>
-    </li>
-    <li class="menu">
-      <a href="/admin/menu">레슨 관리</a>
-      <div class="submenu">
-        <a href="/admin/menu">레슨 소개</a>
       </div>
     </li>
     <li class="menu">
       <a href="/admin/menu">커뮤니티 관리</a>
       <div class="submenu">
         <a href="/admin/menu">공지사항</a>
-        <a href="/admin/menu">이벤트</a>
         <a href="/admin/menu/consulting">1:1문의</a>
       </div>
     </li>
     <li id="to_index">
       <a href="/" target="_blank">홈페이지</a>
+    </li>
+    <li class="user">
+      <a>관리자<%= " " + user%>님</a>
+    </li>
+    <li class="user">
+      <a href="/admin/logout">logout</a>
     </li>
   </ul>
 </nav>
