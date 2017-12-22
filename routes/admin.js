@@ -208,6 +208,38 @@ router.post('/insert', function(req, res, next) { //mysql추가
   res.redirect('/admin/menu/noticetable');
 });
 
+router.post('/update_notice', function(req, res, next) { //mysql업데이트
+  var notice_update_sql = 'UPDATE notice_board SET description=? WHERE id=?';
+  var notice_update_params = [req.body.description, req.body.id];
+  connection.query(notice_update_sql, notice_update_params, function(err, rows, fields) {
+    if (!err){
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+
+  res.redirect('/admin/menu/noticetable');
+});
+router.post('/delete_notice', function(req, res, next) { //mysql업데이트
+  var notice_delete_sql = 'DELETE FROM notice_board WHERE id=?';
+  var notice_delete_params = [req.body.id];
+  connection.query(notice_delete_sql, notice_delete_params, function(err, rows, fields) {
+    if (!err){
+      var numbersof_update_sql = 'UPDATE numbersof SET noticeTables=noticeTables-1';
+      connection.query(numbersof_update_sql, function(err, rows, fields) {
+        if (!err){
+        }else{
+          console.log('Error while performing Query.', err);
+        }
+      });
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+
+  res.redirect('/admin/menu/noticetable');
+});
+
 //보안 로그인
 passport.serializeUser(function(user, done) {
   done(null, user.userid);
