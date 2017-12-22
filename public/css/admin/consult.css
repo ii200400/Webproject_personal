@@ -10,8 +10,16 @@ article{
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
-.consult_view #update_button{
+.consult_view #update_button, .consult_view #insert_button{
   float: right;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin: 8px;
+}
+.consult_view #delete_button{
+  color: white;
+  background-color: red;
+  float: left;
   border-radius: 5px;
   padding: 7px 15px;
   margin: 8px;

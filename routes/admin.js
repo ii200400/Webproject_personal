@@ -76,6 +76,27 @@ router.get('/menu/consulting/:id', function(req, res, next) {
     res.redirect('/admin');
   }
 });
+router.get('/menu/noticetable', function(req, res, next) {
+  if (req.user) {
+    var search_sql = 'SELECT * FROM notice_board';
+    connection.query(search_sql, function(err, rows, fields) {
+      if (!err){
+        res.render('noticetable', {rows:rows, user: req.user.display});
+      }else{
+        console.log('Error while performing Query.', err);
+      }
+    });
+  }else{
+    res.redirect('/admin');
+  }
+});
+router.get('/menu/write', function(req, res, next) {
+  if (req.user) {
+    res.render('write', {user: req.user.display});
+  }else{
+    res.redirect('/admin');
+  }
+});
 
 //서버에서만 사용
 router.post('/update', function(req, res, next) { //mysql업데이트
@@ -108,6 +129,41 @@ router.post('/update', function(req, res, next) { //mysql업데이트
   var consult_update_sql = 'UPDATE consult SET answer=? WHERE id=?';
   var consult_update_params = [answer, req.body.id]
   connection.query(consult_update_sql, consult_update_params, function(err, rows, fields) {
+    if (!err){
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+
+  res.redirect('/admin/menu/consulting');
+});
+router.post('/delete', function(req, res, next) { //mysql삭제
+  var consult_search_sql = 'SELECT * FROM consult WHERE id=?';
+  var consult_search_params = [req.body.id];
+  connection.query(consult_search_sql, consult_search_params, function(err, rows, fields) {
+    var data = rows[0];
+    if (data.answer===null) {
+      var numbersof_update_sql = 'UPDATE numbersof SET consults=consults-1';
+      connection.query(numbersof_update_sql, function(err, rows, fields) {
+        if (!err){
+        }else{
+          console.log('Error while performing Query.', err);
+        }
+      });
+    }else{
+      var numbersof_update_sql = 'UPDATE numbersof SET consults=consults-1, answers=answers-1';
+      connection.query(numbersof_update_sql, function(err, rows, fields) {
+        if (!err){
+        }else{
+          console.log('Error while performing Query.', err);
+        }
+      });
+    }
+  });
+
+  var consult_search_sql = 'DELETE FROM consult WHERE id=?';
+  var consult_search_params = [req.body.id];
+  connection.query(consult_search_sql, consult_search_params, function(err, rows, fields) {
     if (!err){
     }else{
       console.log('Error while performing Query.', err);

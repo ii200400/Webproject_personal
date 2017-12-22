@@ -44,6 +44,10 @@
                 <input type="hidden" name="id" value= <%= data.id %> >
                 <input id="update_button" type="submit" value="등록">
               </form>
+              <form action="/admin/delete" method="post" id="myform">
+                <input type="hidden" name="id" value= <%= data.id %> >
+                <input id="delete_button" type="submit" value="삭제">
+              </form>
             </li>
           </ul>
         </div>

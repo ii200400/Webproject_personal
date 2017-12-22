@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>자연 필라테스</title>
+    <meta charset="utf-8"/>
+    <!-- 기본 css(header, nav, footer) -->
+    <link rel='stylesheet' href='/css/admin/basic.css'/>
+
+    <!-- 상담페이지의 css -->
+    <link rel='stylesheet' href='/css/admin/table.css'/>
+  </head>
+
+  <body>
+    <%- include('header') -%>
+
+    <section>
+      <div id="submenu_title">
+        <p>공지사항</p>
+      </div>
+      <table>
+        <colgroup>
+          <col style="width: 140px;" <!--글 번호-->
+          <col style="width: 300px;" <!--제목-->
+          <col style="width: 160px;" <!--작성자-->
+          <col style="width: 160px;" <!--작성일-->
+        </colgroup>
+        <thead>
+          <tr>
+            <th>글 번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = rows.length - 1; i>=0; i--){
+            var d = new Date(rows[i].created);
+            var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
+             %>
+            <tr class="consult">
+              <td><%= i+1 %></td>
+              <td id="title_content"><%= rows[i].title %></td>
+              <td><%= rows[i].name %></td>
+              <td><%= date %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <a href ="/admin/menu/write"> 글쓰기 </a>
+    </section>
+
+    <script src="/js/admin/table_controller.js"></script>
+  </body>
+</html>
