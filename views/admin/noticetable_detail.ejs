@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>자연 필라테스</title>
+    <meta charset="utf-8"/>
+    <!-- 기본 css(header, nav, footer) -->
+    <link rel='stylesheet' href='/css/admin/basic.css'/>
+
+    <!-- 상담페이지의 css -->
+    <link rel='stylesheet' href='/css/admin/consult.css'/>
+  </head>
+
+  <body>
+    <%- include('header') -%>
+
+    <section>
+      <div id="submenu_title">
+        <p>공지사항</p>
+      </div>
+      <article>
+        <div class="consult_view">
+          <ul>
+            <%
+              var d = data.created;
+              var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
+            %>
+            <li>제목 : <%= data.title %></li>
+            <li>작성자 : <%= data.author %></li>
+            <li>작성일 : <%= date %></li>
+            <li>
+              <p>공지</p>
+              <form action="/admin/update_notice" method="post" id="myform">
+                <textarea rows="10" cols="100" name="answer" form="myform"><%= data.description %></textarea><br>
+                <input type="hidden" name="id" value= <%= data.id %> >
+                <input id="update_button" type="submit" value="등록">
+              </form>
+              <form action="/admin/delete_notice" method="post" id="myform">
+                <input type="hidden" name="id" value= <%= data.id %> >
+                <input id="delete_button" type="submit" value="삭제">
+              </form>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </body>
+</html>

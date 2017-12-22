@@ -18,10 +18,21 @@ router.get('/facility', function(req, res, next) {
   res.render('facility');
 });
 router.get('/notice', function(req, res, next) {
-  var search_sql = 'SELECT * FROM consult'
+  var search_sql = 'SELECT * FROM notice_board'
   connection.query(search_sql, function(err, rows, fields) {
     if (!err){
       res.render('notice', {rows:rows})
+    }else{
+      console.log('Error while performing Query.', err);
+    }
+  });
+});
+router.get('/notice/:id', function(req, res, next) {
+  var search_sql = 'SELECT * FROM notice_board';
+  var number = req.params.id;
+  connection.query(search_sql, function(err, rows, fields) {
+    if (!err){
+      res.render('read', {data:rows[number]});
     }else{
       console.log('Error while performing Query.', err);
     }

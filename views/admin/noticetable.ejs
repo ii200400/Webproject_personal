@@ -37,10 +37,10 @@
             var d = new Date(rows[i].created);
             var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
              %>
-            <tr class="consult">
+            <tr class="notice">
               <td><%= i+1 %></td>
               <td id="title_content"><%= rows[i].title %></td>
-              <td><%= rows[i].name %></td>
+              <td><%= rows[i].author %></td>
               <td><%= date %></td>
             </tr>
           <% } %>

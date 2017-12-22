@@ -24,11 +24,11 @@
                 var time = new Date()
                 var cal = time.getFullYear() + "." + time.getMonth() + "." + time.getDate();
               %>
-              <li>제목 : <input type="text" name="" value=""> </li>
-              <li>작성자 : <%= user %></li>
-              <li>작성일 : <%= cal %></li>
+              <li>제목 : <input type="text" name="title" value=""> </li>
+              <li>작성자 : <input hidden type="text" name="name" value=<%= user %>> <%= user %> </li>
+              <li>작성일 : <input hidden type="text" name="created" value=<%= cal %>> <%= cal %> </li>
               <li>내용</li>
-              <textarea rows="10" cols="100" name="answer" form="myform"></textarea><br>
+              <textarea rows="10" cols="100" name="description" form="myform"></textarea><br>
               <input id="insert_button" type="submit" value="등록">
             </ul>
           </form>

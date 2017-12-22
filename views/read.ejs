@@ -79,15 +79,19 @@
 			<div class="container">
 				<div id="fh5co-work-section">
 					<div class="container" style="margin-top:100px;">
+						<%
+              var d = data.created;
+              var date = d.getFullYear() + "." + d.getMonth() + "." + d.getDate();
+            %>
 						<h1 style="font-size:40px;font-weight:500;">공지사항</h1>
 						<div class="jumbotron">
-							<h1 class="display-3">제목</h1>
-							<p class="lead" style="text-align:right">날짜</p>
+							<h1 class="display-3"><%= data.title %></h1>
+							<p class="lead" style="text-align:right"><%= date %></p>
 							<hr class="my-4">
-							<p>내용</p>
+							<p><%= data.description %></p>
 						</div>
 					</div>
-					<a class="btn btn-default pull-right" href="notice.html">목록</a>
+					<a class="btn btn-default pull-right" href="/notice">목록</a>
 				</div>
 			</div>
 			<%- include('footer') -%>
