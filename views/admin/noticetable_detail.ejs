@@ -30,7 +30,7 @@
             <li>
               <p>공지</p>
               <form action="/admin/update_notice" method="post" id="myform">
-                <textarea rows="10" cols="100" name="answer" form="myform"><%= data.description %></textarea><br>
+                <textarea rows="10" cols="100" name="description" form="myform"><%= data.description %></textarea><br>
                 <input type="hidden" name="id" value= <%= data.id %> >
                 <input id="update_button" type="submit" value="등록">
               </form>
