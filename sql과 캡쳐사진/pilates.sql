@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for Win64 (x86_64)
 --
 -- Host: localhost    Database: pilates
 -- ------------------------------------------------------
--- Server version	5.6.36
+-- Server version	5.7.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -66,7 +66,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
-INSERT INTO `manager` VALUES ('dudtjs','3Oacg71aUSByuNr8Sro8brvIHg8h/HyKkjM9EQsAoIc5fdUBZyGTePFR/gF7R4xAhPLHs77mUcC/Fsp7BgoFiCh8oSxvwP6VCUIt3XZhmXp7qvaSbwEch6XVJGsLjY3uUT029hh+M/+e0vl1N3WZq1ylE5cVcEvwZkx/oZvSLWQ=','im','UHt0zBITBM5P2rjqbafQPkzS9Oo4roTNzPdUwt5sxXiEeKFG/gAct0UjRaNtNPGW1aEu7WjsvjdpLknmFJYEmg=='),('test','V7mkbBExZ2CDLmhtk0B3joGDaYowZLXUtLOEb9w1wO8eYUvoyV7LwdkTugSNbBU6R9yReC5PqbpjdEDmYHEVTchxHYxEOwsfk1o0Id0g6qw31fWhP7Eo2mB6tPHpIFJkwzQvNQTWdU3gSf34B8h/TViT1pi9Cmnt9pwr/SAAabU=','아이디','IIKX7c/HhNQNiXUXyGQi+ij3fU72b2OvPL8JpGUYhGbUI/xg2SCKcN8i0dqz//+lc+q8HR/bv/LkH4cShM7ZSg==');
+INSERT INTO `manager` VALUES ('dudtjs','29CeJiElKzLrQQNHLflstSQWPMAni+tsSRGsVV4hI+tPju+caukUXaMS2WUlfx3qmQWOa5QU9MD7q8Dxj+asMLzpH6DjMQVKR56+t2XBMdm1lS8edmRwMhvuyyqLNmPN33SJL9zPyR/v3YXw9pa56GFoGs2RwPAL1+ScNOXPpZw=','im','zsdToalFiBcvFlbBPcYYeIWkDoUFxn0TJSAiiFR1eJsz/KzrkCtf3KYQ8PKvtAU/E9xh4Gya1+2oPeS04dnAbA=='),('test','V7mkbBExZ2CDLmhtk0B3joGDaYowZLXUtLOEb9w1wO8eYUvoyV7LwdkTugSNbBU6R9yReC5PqbpjdEDmYHEVTchxHYxEOwsfk1o0Id0g6qw31fWhP7Eo2mB6tPHpIFJkwzQvNQTWdU3gSf34B8h/TViT1pi9Cmnt9pwr/SAAabU=','아이디','IIKX7c/HhNQNiXUXyGQi+ij3fU72b2OvPL8JpGUYhGbUI/xg2SCKcN8i0dqz//+lc+q8HR/bv/LkH4cShM7ZSg==');
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `numbersof` (
 
 LOCK TABLES `numbersof` WRITE;
 /*!40000 ALTER TABLE `numbersof` DISABLE KEYS */;
-INSERT INTO `numbersof` VALUES (40,5,1,0);
+INSERT INTO `numbersof` VALUES (42,5,1,0);
 /*!40000 ALTER TABLE `numbersof` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('SzPGyTPWoCXHWX9TfxbR8OnyiR3UHny0',1514102350,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"passport\":{\"user\":\"dudtjs\"}}');
+INSERT INTO `sessions` VALUES ('5hxwNp13auX1GHmXtwxnq5oBUBIgQgEt',1550409610,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"passport\":{\"user\":\"dudtjs\"}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -156,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-23 20:27:34
+-- Dump completed on 2019-02-16 22:23:47

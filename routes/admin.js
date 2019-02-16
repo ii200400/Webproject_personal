@@ -263,7 +263,7 @@ passport.use(new LocalStrategy(
     var pwd = password;
     var sql = 'SELECT * FROM manager WHERE userid=?';
     connection.query(sql, [uname], function(err, rows, fields) {
-      if (!err){
+      if (!err && rows.length>0){
         var user = rows[0];
         console.log(user);
         return hasher({password:pwd, salt:user.salt},
