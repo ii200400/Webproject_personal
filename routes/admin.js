@@ -13,7 +13,7 @@ var connection = require('../db')();
 router.use(session({
   secret: '98DDV78QQEQHEC998DDH289DH9',
   resave: false,
-  saveUninitaialized: true,
+  saveUninitialized: true,
   store:new MySQLStore({
     host     : 'localhost',
     port     :  3306,
