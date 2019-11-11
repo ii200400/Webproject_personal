@@ -4,7 +4,7 @@
 개발 환경: WAMP
 
 사용 기술
-+ Front-end  - Html5, css, javascript, Bootstrap, Jquery\
++ Front-end  - Html5, css, javascript, Bootstrap, Jquery
 + Back-end  - Nodejs, express-nodejs, mysql, npm
 
 나의 작업
@@ -13,6 +13,9 @@
 + Admin 페이지 레이아웃 구현
 + Admin 로그인 기능 구현
 + Admin / guest 게시판 구현
+
+동영상 링크
++ https://youtu.be/c41LBX4rMrQ
 
 ## 미리보기 사진
 ### client 페이지
