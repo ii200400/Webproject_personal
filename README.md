@@ -1,10 +1,16 @@
-# 웹 프로젝트 (교내 프로젝트)
-제작 인원: 3명
+# 웹 프로젝트 (필라테스 홈페이지)
 
-개발 환경: WAMP
+재능기부의 일환으로 사용가능한 웹 페이지를 구현해보도록 한다.
+
+## 개요
+
++ 제작 인원 : 3명
++ 개발 기간 : 약 3개월 (2017.09~2017.12)
 
 ## 사용 기술
 
++ Atom(텍스트 편집기)
++ WAMP(윈도우 웹 서버)
 + Front-end  - Html5, css, javascript, Bootstrap, Jquery
 + Back-end  - Nodejs, express-nodejs, mysql, npm
 
