@@ -7,10 +7,13 @@
 + 제작 인원 : 3명
 + 개발 기간 : 약 3개월 (2017.09~2017.12)
 
+## 개발 환경
+
++ Atom (텍스트 편집기)
++ WAMP (오픈 소스 통합 소프트웨어 번들)
+
 ## 사용 기술
 
-+ Atom(텍스트 편집기)
-+ WAMP(윈도우 웹 서버)
 + Front-end  - Html5, css, javascript, Bootstrap, Jquery
 + Back-end  - Nodejs, express-nodejs, mysql, npm
 
